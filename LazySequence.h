@@ -29,6 +29,17 @@ public:
     ~LazySequence() {
         delete generator;
     }
+
+    LazySequence<T>& operator=(const LazySequence& other) {
+        if (this != &other) {
+            Generator<T>* newGenerator = (other.generator == nullptr) ? nullptr : other.generator->Clone(this);
+            delete generator;
+            generator = newGenerator;
+            cache = other.cache;
+            length = other.length;
+        }
+        return *this;
+    }
     
     T Get(Ordinal index) {
         if (GetLength() <= index)

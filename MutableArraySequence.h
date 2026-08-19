@@ -12,6 +12,13 @@ public:
     MutableArraySequence(const MutableArraySequence<T>& other) : ArraySequence<T>(other) {}
     MutableArraySequence(const Sequence<T>* other) : ArraySequence<T>(other) {}
 
+    MutableArraySequence<T>& operator=(const MutableArraySequence<T>& other) {
+        if (this != &other) {
+            ArraySequence<T>::operator=(other);
+        }
+        return *this;
+    }
+
     MutableArraySequence<T>* CreateEmptySequence() const override {
         return new MutableArraySequence<T>;
     }

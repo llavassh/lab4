@@ -75,7 +75,7 @@ private:
 public:
 
     RuleGenerator(LazySequence<T>* owner, T (*rule)(Sequence<T>*), const Sequence<T>* initial) : owner(owner), rule(rule), 
-        state(initial) {}
+       state(initial) {}
 
     T GetNext() override {
         if (state.GetLength() == 0)

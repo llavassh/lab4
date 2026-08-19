@@ -94,6 +94,14 @@ void testsLazySequence() {
         thrown4 = true;
     }
     assert(thrown4);
+
+    LazySequence<int> lseq4;
+    lseq4 = lseq2;
+    assert(lseq4.Get(Ordinal(0, 7)) == 21);
+    assert(lseq4.GetMaterializedCount() == lseq2.GetMaterializedCount());
+    lseq4.Get(Ordinal(0, 10));
+    assert(lseq4.GetMaterializedCount() == 11);
+    assert(lseq2.GetMaterializedCount() == 8);
 }
 
 void testsOperations() {

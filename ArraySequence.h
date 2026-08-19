@@ -34,6 +34,15 @@ public:
             items->Add(other->Get(i));
         }
     }
+    
+    ArraySequence<T>& operator=(const ArraySequence<T>& other) {
+        if (this != &other) {
+            DynamicArray<T> *newItems = new DynamicArray<T>(*other.items);
+            delete items;
+            items = newItems;
+        }
+        return *this;
+    }
 
     //удаление
     virtual ~ArraySequence() {
