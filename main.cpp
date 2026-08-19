@@ -142,7 +142,7 @@ void UI() {
         cout << "0. Exit" << endl;
         cout << "Choice: ";
         cin >> choice;
-        if (lseq == nullptr && choice != 1) {
+        if (lseq == nullptr && choice != 1 && choice != 0) {
             cout << "Create a sequence first" << endl;
             continue;
         }
